@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SearchHistory } from './db/entity/search.entity';
@@ -18,5 +18,11 @@ export class AppController {
   @ApiOperation({ summary: 'Return search' })
   get(): Promise<SearchHistory[]> {
     return this.appService.get();
+  }
+
+  @Delete()
+  @ApiOperation({ summary: 'Return search' })
+  clear(): Promise<void> {
+    return this.appService.clear();
   }
 }

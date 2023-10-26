@@ -17,4 +17,8 @@ export class AppService {
   async save(text: string): Promise<SearchHistory> {
     return await this.searchRepository.save({ text });
   }
+
+  async clear(): Promise<void> {
+    await this.searchRepository.delete({});
+  }
 }
